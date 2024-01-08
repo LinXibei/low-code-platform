@@ -12,9 +12,15 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+  <i class="bi bi-shield-shaded"></i>
   <HelloWorld msg="Vite + Vue" />
 </template>
-
+<style lang="scss" scoped>
+@import "./styles/global-var.scss";
+div{
+  background: $defaultColor;
+}
+</style>
 <style scoped>
 .logo {
   height: 6em;

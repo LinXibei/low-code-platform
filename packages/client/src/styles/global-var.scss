@@ -1,0 +1,37 @@
+/* 全局变量 css 样式，方便之后换肤处理 */
+$defaultBgColor: #ffffff;
+$defaultColor: rgba(0, 0, 0, 0.65);
+
+/* 边框颜色 */
+$borderColor: rgba(0, 0, 0, 0.08);
+$borderSelect-color: #36b8e0;
+
+/* 边框线条宽度 */
+$borderSmallWidth: 1px;
+$borderMediumWidth: 2px;
+$borderLargeWidth: 3px;
+
+/* 字体大小 */
+$fontSuperSmallSize: 10px;
+$fontSmallSize: 12px;
+$fontMediumSize: 14px;
+$fontLargeSize: 16px;
+$fontSuperLargeSize: 18px;
+
+/* 字体加粗 */
+$fontWeightLight: 100;
+$fontWeightMedium: 500;
+$fontWeightBold: 900;
+
+/* 字体颜色 */
+$fontColorLight: rgba(0, 0, 0, 0.65);
+$fontColorWeight: rgba(0, 0, 0, 0.85);
+
+/* 滚动条 */
+$scrollbarWidth: 5px;
+$scrollbarHeight: 5px;
+$scrollbarThumbBackgroundColor: #c1c1c1;
+$scrollbarThumbBorderRadius: 5px;
+
+/* 定部bar */
+$headerBackgroundColor: #141C26;
