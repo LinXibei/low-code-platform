@@ -1,52 +1,22 @@
 <script setup lang="ts">
 import BaseHeader from './components/BaseHeader.vue'
+import Menu from './components/Menu.vue'
+// import PageBread from './components/PageBread.vue';
 // import HelloWorld from './components/HelloWorld.vue'
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting,
-} from '@element-plus/icons-vue'
-
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
 </script>
 
 <template>
   <div class="container">
     <BaseHeader />
     <div class="content">
-      <div class="menu-container">
-        <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
-          :router="true"
-        >
-          <el-menu-item index="/home">
-            <el-icon><location /></el-icon>
-            <template #title>Home</template>
-          </el-menu-item>
-          <el-menu-item index="/login">
-            <el-icon><icon-menu /></el-icon>
-            <template #title>Login</template>
-          </el-menu-item>
-          <el-menu-item index="/editor">
-            <el-icon><document /></el-icon>
-            <template #title>Editor</template>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <el-icon><setting /></el-icon>
-            <template #title>Navigator Four</template>
-          </el-menu-item>
-        </el-menu>
+      <Menu />
+      <div class="router-container">
+        <p class="page-name">Home</p>
+        <div class="router-view">
+          <router-view />
+        </div>
+        <!-- <PageBread /> -->
       </div>
-      <router-view />
     </div>
   </div>
 </template>
@@ -57,9 +27,38 @@ const handleClose = (key: string, keyPath: string[]) => {
 // }
 .content{
   display: flex;
+  justify-content: space-between;
+  height: 100%;
+  overflow: hidden;
 }
-.menu-container{
-  width: 200px;
+.router-container{
+  width: 100%;
+}
+.page-name{
+  line-height: 50px;
+  height: 50px;
+  background-color: #fff;
+  color: #2a2a2a;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 20px;
+}
+.router-view{
+  padding: 20px;
+  margin: 10px;
+  border-radius: 4px;
+  background: #fff;
+  min-height: calc(100vh - 170px);
+  color: #2a2a2a;
+}
+.router-container{
+  display: flex;
+  background: #f5f6f9;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
 }
 </style>
 <style scoped>
