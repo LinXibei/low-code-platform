@@ -4,7 +4,7 @@ import {
   Document,
   Menu as IconMenu,
   Location,
-  Setting,
+  // Setting,
   Fold,
   Expand,
 } from '@element-plus/icons-vue'
@@ -18,13 +18,14 @@ const handleClose = (key: string, keyPath: string[]) => {
 const isFold = ref(false)
 </script>
 <template>
-  <div class="menu-container">
+  <div class="menu-container" :class="{'collapse': isFold}">
     <div class="menu-vertical-container">
       <el-menu
-        default-active="2"
+        :default-active="$route.path"
         class="menu-vertical"
         @open="handleOpen"
         @close="handleClose"
+        :collapse="isFold"
         :router="true"
       >
         <el-menu-item index="/home" class="menu-item-custom">
@@ -39,14 +40,14 @@ const isFold = ref(false)
           <el-icon><document /></el-icon>
           <template #title><span>Editor</span></template>
         </el-menu-item>
-        <el-menu-item index="4">
+        <!-- <el-menu-item index="4">
           <el-icon><setting /></el-icon>
           <template #title>Navigator Four</template>
-        </el-menu-item>
+        </el-menu-item> -->
       </el-menu>
     </div>
     <div class="menu-fold">
-      <span @click="isFold = !isFold"><el-icon size="22" class="icon-custom"><Fold /></el-icon></span>
+      <span @click="isFold = !isFold"><el-icon size="22" class="icon-custom"><Expand v-if="isFold"/><Fold v-else /></el-icon></span>
     </div>
   </div>
 </template>
@@ -59,7 +60,23 @@ const isFold = ref(false)
   z-index: 2;
   position: relative;
   box-shadow: 0px 2px 8px rgba(167, 199, 233, 0.2);
+  &.collapse{
+    width: 70px;
+    .menu-item-custom{
+      &:before{
+        left: 0;
+        top: 0;
+        background: #f5f6f9;
+        border-radius: 4px;
+        width: 48px;
+        left: 10px;
+        height: 48px;
+        visibility: hidden;
+      }
+    }
+  }
   .menu-vertical-container{
+    padding-top: 15px;
     height: calc(100vh - 120px);
     overflow-y: auto;
     font-weight: 600;
@@ -68,6 +85,7 @@ const isFold = ref(false)
     height: 60px;
     line-height: 60px;
     text-align: left;
+    padding-left: 12px;
     span{
       padding: 10px;
       color: #303133;
@@ -84,7 +102,7 @@ const isFold = ref(false)
   }
   .menu-item-custom{
     height: 48px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     position: relative;
     span{
       position: relative;
@@ -117,6 +135,14 @@ const isFold = ref(false)
 .menu-vertical-container .el-menu-item{
   border-radius: 4px;
   padding: 5px;
+}
+.menu-container.collapse .el-icon{
+  font-size: 22px;
+}
+.menu-container.collapse .el-menu-item.menu-item-custom{
+  span{
+    display: none;
+  }
 }
 .menu-vertical-container .el-menu-item.is-active.menu-item-custom{
   color: #409eff;
