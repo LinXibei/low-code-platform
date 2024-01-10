@@ -1,3 +1,6 @@
 <template>
-  <div>Home gagagaga</div>
+  <div>
+    Home gagagaga
+    <slot></slot>
+  </div>
 </template>
