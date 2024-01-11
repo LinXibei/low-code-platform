@@ -7,9 +7,9 @@ import Menu from './components/Menu.vue'
 
 <template>
   <div class="container">
-    <BaseHeader />
+    <BaseHeader v-if="$route.path !== '/editor'"/>
     <div class="content">
-      <Menu />
+      <Menu v-if="$route.path !== '/editor'" />
       <div class="router-container">
         <p class="page-name">Home</p>
         <div class="router-view">
