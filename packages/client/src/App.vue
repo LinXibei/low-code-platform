@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import { watch, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import BaseHeader from './components/BaseHeader.vue'
 import Menu from './components/Menu.vue'
+import EditorHeader from './components/EditorHeader.vue';
 // import PageBread from './components/PageBread.vue';
 // import HelloWorld from './components/HelloWorld.vue'
+const route = useRoute()
+const classObj = ref({})
+watch(() => route.path, (newV) => {
+  if (newV === '/editor') {
+    classObj.value = { minHeight: 'calc(100vh - 110px)'}
+  } else {
+    classObj.value = {}
+  }
+})
 </script>
 
 <template>
@@ -11,8 +23,9 @@ import Menu from './components/Menu.vue'
     <div class="content">
       <Menu v-if="$route.path !== '/editor'" />
       <div class="router-container">
-        <p class="page-name">Home</p>
-        <div class="router-view">
+        <p class="page-name" v-if="$route.path !== '/editor'">Home</p>
+        <EditorHeader v-else />
+        <div class="router-view" :style="classObj">
           <router-view />
         </div>
         <!-- <PageBread /> -->
