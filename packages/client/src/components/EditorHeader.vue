@@ -2,7 +2,8 @@
   <div class="editor-header">
     <div class="logo-container">
       <img :src="logoBase"/>
-      <b>Editor</b></div>
+      <b>Editor</b>
+    </div>
     <div class="editor-menu">
       <el-button
         type="primary"

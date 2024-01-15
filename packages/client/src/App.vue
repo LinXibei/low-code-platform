@@ -10,7 +10,7 @@ const route = useRoute()
 const classObj = ref({})
 watch(() => route.path, (newV) => {
   if (newV === '/editor') {
-    classObj.value = { minHeight: 'calc(100vh - 110px)'}
+    classObj.value = { padding: 0, minHeight: 'calc(100vh - 70px)', background: 'transparent', height: 'calc(100vh - 70px)'}
   } else {
     classObj.value = {}
   }

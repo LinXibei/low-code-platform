@@ -1,9 +1,9 @@
 import { defineComponent, h, ref } from "vue";
 import Home from "@/layouts/Home.vue";
-import EditorHeader from '@/components/EditorHeader.vue'
+// import EditorHeader from '@/components/EditorHeader.vue'
 export default defineComponent({
   components: {
-    EditorHeader,
+    // EditorHeader,
   },
   name: 'editor-area',
   setup() {

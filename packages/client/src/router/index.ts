@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/editor',
     name: '编辑器',
-    component: () => import('@/pages/editor-area/index.tsx')
+    component: () => import('@/pages/editor/index.tsx')
   },
   {
     path: '/home',
