@@ -23,7 +23,7 @@ export default defineComponent({
       })
       return h(ElTabs, {
         class: 'prop-tabs',
-      }, elTabPanes)
+      }, () => elTabPanes)
     }
   }
 })

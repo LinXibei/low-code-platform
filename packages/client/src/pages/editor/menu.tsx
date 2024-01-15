@@ -1,6 +1,6 @@
-import { defineComponent, h } from "vue";
+import { defineComponent, h, ref } from "vue";
 import '@/styles/editor/menu.scss';
-import { ElTabs, ElTabPane } from 'element-plus'
+import { ElTabs, ElTabPane, ElInput } from 'element-plus'
 const btns = [
   {
     label: '组件概览',
@@ -29,7 +29,8 @@ export default defineComponent({
   },
   name: 'editor-menu',
   setup() {
-    const elTabPanes = btns.map(btn => {
+    const searchInput = ref('')
+    const elTabPanes = btns.map((btn, index) => {
       const iconTag = h('i', { class: 'iconfont ' + btn.icon })
       return h(ElTabPane, {}, {
         label: () => h('span', {
@@ -45,7 +46,7 @@ export default defineComponent({
         stretch: true,
         style,
         class: 'menu-tabs',
-      }, [...elTabPanes])
+      }, () => [...elTabPanes])
     }
   }
 })
