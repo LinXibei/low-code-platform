@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="editor-area">
     Home gagagaga
     <slot></slot>
     <input
@@ -15,3 +15,11 @@ defineProps({
 })
 defineEmits(['update:firstName'])
 </script>
+<style lang="scss" scoped>
+.editor-area {
+  width: calc(100% - 650px);
+  height: 100%;
+  background: #fff;
+  border-radius: 4px;
+}
+</style>
