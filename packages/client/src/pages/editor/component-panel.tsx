@@ -1,13 +1,26 @@
-import { defineComponent, h } from "vue";
-import { ElTabs } from 'element-plus'
+import { defineComponent, h, ref } from "vue"
+import { ElInput } from 'element-plus'
 export default defineComponent({
-  components: {
-    ElTabs,
-  },
   name: 'component-panel',
-  setup() {
+  setup(props) {
+    // const elementInput = 
+    // <el-input
+    //   v-model="input2"
+    //   class="w-50 m-2"
+    //   placeholder="Please Input"
+    //   :suffix-icon="Search"
+    // />
+    console.log(9999, props)
+    const inputModel = ref('')
+    const searchInput = () => h(ElInput, {
+      modelValue: inputModel.value,
+      onChange: (e: any) => {
+        inputModel.value = e
+        // 筛选组件、模版逻辑
+      }
+    })
     return () => {
-      return h(ElTabs, {})
+      return h('p', '组件面板')
     }
   }
 })
