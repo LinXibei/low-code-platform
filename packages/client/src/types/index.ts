@@ -26,6 +26,8 @@ export interface ComponentMeta {
   icon: string;
   props: string[] | object;
   version: string;
+  type: string;
+  typeCn: string;
 }
 
 /**

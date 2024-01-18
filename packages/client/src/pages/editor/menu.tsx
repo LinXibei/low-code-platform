@@ -38,6 +38,8 @@ export default defineComponent({
       key: 'button',
       alias: '按钮',
       icon: 'fa-arrow-pointer',
+      type: 'normal',
+      typeCn: '普通组件',
       props: {},
       version: '1.0.1'
     })

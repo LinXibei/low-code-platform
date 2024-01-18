@@ -25,13 +25,15 @@ export default defineComponent({
     //   name: 'button',
     //   key: 'button',
     //   alias: '按钮',
+    //   type: 'normal',
+    //   typeCn: '普通组件',
     //   icon: 'icon-shijian',
     //   props: {},
     //   version: '1.0.1'
     // }
-    const map = reactive({})
+    const map = reactive<Record<string, ComponentMeta[]>>({})
     for (const item of components) {
-      map[item.key] = item
+      map[item.typeCn] = [...map[item.typeCn] || [], item]
     }
     const component = components.map((item: ComponentMeta) => {
       const icons = ['fas', item.icon]
