@@ -1,5 +1,7 @@
-import { defineComponent, h, ref } from "vue"
+import { defineComponent, h, ref, watch } from "vue"
 import { ElInput } from 'element-plus'
+import { Search } from '@element-plus/icons-vue'
+import '@/styles/editor/component-panel.scss'
 export default defineComponent({
   name: 'component-panel',
   setup(props) {
@@ -10,17 +12,31 @@ export default defineComponent({
     //   placeholder="Please Input"
     //   :suffix-icon="Search"
     // />
-    console.log(9999, props)
     const inputModel = ref('')
-    const searchInput = () => h(ElInput, {
-      modelValue: inputModel.value,
-      onChange: (e: any) => {
-        inputModel.value = e
-        // 筛选组件、模版逻辑
-      }
-    })
+    const onChange = (e: any) => {
+      console.log(99999, e)
+    }
+    const searchInput = () =>
+      <ElInput
+        v-model={inputModel.value}
+        prefixIcon={Search}
+        class="component-panel-search-input"
+        placeholder="组件/模板名称"
+        onChange={onChange}
+        clearable
+        />
+    // h(ElInput, {
+    //   modelValue: inputModel.value,
+    //   prefixIcon: Search,
+    //   class: 'component-panel-search-input',
+    //   placeholder: '组件/模板名称',
+    //   // onChange: (e: any) => {
+    //   //   // inputModel.value = e
+    //   //   // 筛选组件、模版逻辑
+    //   // }
+    // })
     return () => {
-      return h('p', '组件面板')
+      return h('div', {}, [searchInput()])
     }
   }
 })

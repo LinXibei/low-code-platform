@@ -3,14 +3,14 @@
   height: 100%;
   background: #fff;
   box-sizing: border-box;
-  padding-top: 41px;
+  padding-top: 10px;
   position: relative;
   border-radius: 4px;
   &::before{
     content: "";
     position: absolute;
     width: 2px;
-    height: 41px;
+    height: 10px;
     left: 58px;
     top: 0;
     display: block;
@@ -22,6 +22,7 @@
   }
   .el-tabs__content{
     position: relative;
-    top: -41px;
+    top: -6px;
+    height: 100%;
   }
 }

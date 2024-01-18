@@ -28,6 +28,7 @@ const btns = [
 export default defineComponent({
   components: {
     ElTabs,
+    componentPanel
   },
   name: 'editor-menu',
   setup() {
@@ -46,7 +47,9 @@ export default defineComponent({
         label: () => h('span', {
           class: 'pane-label',
         }, [h(iconTag)]),
-        default: () => btn.label
+        default: () => {
+          return index === 0 ? <componentPanel /> : btn.label
+        }
       })
     })
     const style = { height: '100%' }
