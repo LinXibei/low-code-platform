@@ -37,7 +37,7 @@ export default defineComponent({
       name: 'button',
       key: 'button',
       alias: '按钮',
-      icon: 'icon-shijian',
+      icon: 'fa-arrow-pointer',
       props: {},
       version: '1.0.1'
     })
@@ -48,7 +48,7 @@ export default defineComponent({
           class: 'pane-label',
         }, [h(iconTag)]),
         default: () => {
-          return index === 0 ? <componentPanel /> : btn.label
+          return index === 0 ? <componentPanel components={components.value}/> : btn.label
         }
       })
     })

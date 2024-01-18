@@ -17,7 +17,8 @@ import {
   faTrashRestoreAlt,
   faFile,
   faTree,
-  faFileArchive
+  faFileArchive,
+  faArrowPointer,
 } from '@fortawesome/free-solid-svg-icons'
 library.add(faCode);
 library.add(faEye);
@@ -26,6 +27,7 @@ library.add(faTrashRestoreAlt);
 library.add(faFile);
 library.add(faTree);
 library.add(faFileArchive);
+library.add(faArrowPointer);
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
