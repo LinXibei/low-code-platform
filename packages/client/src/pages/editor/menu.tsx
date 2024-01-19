@@ -43,6 +43,16 @@ export default defineComponent({
       props: {},
       version: '1.0.1'
     })
+    components.value.push({
+      name: 'text',
+      key: 'text',
+      alias: '文本',
+      icon: 'pen-nib',
+      type: 'normal',
+      typeCn: '普通组件',
+      props: {},
+      version: '1.0.1'  
+    })
     const elTabPanes = btns.map((btn, index) => {
       const iconTag = h('i', { class: 'iconfont ' + btn.icon })
       return h(ElTabPane, {}, {

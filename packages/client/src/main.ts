@@ -19,6 +19,7 @@ import {
   faTree,
   faFileArchive,
   faArrowPointer,
+  faPenNib
 } from '@fortawesome/free-solid-svg-icons'
 library.add(faCode);
 library.add(faEye);
@@ -28,6 +29,7 @@ library.add(faFile);
 library.add(faTree);
 library.add(faFileArchive);
 library.add(faArrowPointer);
+library.add(faPenNib);
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)

@@ -1,4 +1,4 @@
-import { defineComponent, h, reactive, ref } from "vue"
+import { defineComponent, h, reactive, ref, Ref, VNode, watch } from "vue"
 import { ElInput } from 'element-plus'
 import { Search } from '@element-plus/icons-vue'
 import '@/styles/editor/component-panel.scss'
@@ -35,14 +35,28 @@ export default defineComponent({
     for (const item of components) {
       map[item.typeCn] = [...map[item.typeCn] || [], item]
     }
-    const component = components.map((item: ComponentMeta) => {
-      const icons = ['fas', item.icon]
-      return (
-        <p><font-awesome-icon icon={icons} />{item.alias}</p>
-      )
-    })
+    const component: Ref<VNode[]> = ref([])
+    watch(map, (newV) => {
+      for (const [key, item] of Object.entries(newV)) {
+        component.value.push(<h3 class="component-panel-title">{key}</h3>)
+        const tmpComps = []
+        for (const comp of item) {
+          tmpComps.push(<p><font-awesome-icon icon={['fas', comp.icon]} />{comp.alias}</p>)
+        }
+        component.value.push( 
+          <div class="component-panel-list">
+            {tmpComps}
+          </div>
+        )
+      }
+    }, { immediate: true, deep: true })
+    const componentContainer = () => h(
+      <div class="component-panel-container">
+        { component.value }
+      </div>
+    )
     return () => {
-      return h('div', {}, [searchInput(), component])
+      return h('div', {}, [searchInput(), componentContainer()])
     }
   }
 })
