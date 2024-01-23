@@ -15,11 +15,13 @@
     "@vue/runtime-dom": "^3.4.13",
     "element-plus": "^2.4.4",
     "sass": "^1.69.7",
+    "sortablejs": "^1.15.2",
     "vue": "^3.3.11",
     "vue-router": "^4.0.13",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@types/sortablejs": "^1.15.7",
     "@vitejs/plugin-vue": "^4.5.2",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "typescript": "^5.2.2",
