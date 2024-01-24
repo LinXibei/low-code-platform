@@ -3,10 +3,14 @@ import { ElInput } from 'element-plus'
 import { Search } from '@element-plus/icons-vue'
 import '@/styles/editor/component-panel.scss'
 import { ComponentMeta } from '@/types'
+import draggableComponent from '@/components/vuedraggable'
 export default defineComponent({
   name: 'component-panel',
+  components: {
+    draggableComponent
+  },
   props: ['components'],
-  setup(props) {
+  setup(props, ctx) {
     const inputModel = ref('')
     const { components } = props;
     const onChange = (e: any) => {
@@ -39,13 +43,22 @@ export default defineComponent({
     watch(map, (newV) => {
       for (const [key, item] of Object.entries(newV)) {
         component.value.push(<h3 class="component-panel-title">{key}</h3>)
-        const tmpComps = []
-        for (const comp of item) {
-          tmpComps.push(<p><font-awesome-icon icon={['fas', comp.icon]} />{comp.alias}</p>)
+        // const tmpComps: JSX.Element[] = []
+        // for (const comp of item) {
+        //   tmpComps.push()
+        // }
+        const props = {
+          model: item
         }
         component.value.push( 
           <div class="component-panel-list">
-            {tmpComps}
+            <draggableComponent
+              { ...props }
+              >
+              {{
+                item: () => '11111'
+              }}
+            </draggableComponent>
           </div>
         )
       }

@@ -11,6 +11,20 @@ const manage = ['Move'];
 interface sortInterface extends Sortable {
   [key: string]: any
 }
+const props = {
+  move: {
+    type: Function,
+    default: () => {},
+  },
+  clone: {
+    type: Function,
+    default: (original: any) => original,
+  },
+  componentData: {
+    type: Object,
+    default: () => {},
+  }
+}
 const draggableComponent = defineComponent({
   name: 'draggable',
   inheritAttrs: false,
@@ -37,6 +51,7 @@ const draggableComponent = defineComponent({
     try {
       this.error = false;
       const { $attrs, $slots }  = this;
+      console.log(3333, $slots.item)
       return h('div', $attrs, $slots)
     } catch(err: any) {
       this.error = true
