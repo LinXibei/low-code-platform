@@ -1,3 +1,4 @@
+import { throwError } from 'element-plus/es/utils/error.mjs';
 import Sortable from 'sortablejs';
 import { defineComponent, h } from 'vue';
 
@@ -28,6 +29,7 @@ const props = {
 const draggableComponent = defineComponent({
   name: 'draggable',
   inheritAttrs: false,
+  props,
   data() {
     return {
       error: false,
@@ -50,9 +52,17 @@ const draggableComponent = defineComponent({
   render() {
     try {
       this.error = false;
-      const { $attrs, $slots }  = this;
-      console.log(3333, $slots.item)
-      return h('div', $attrs, $slots)
+      const { $attrs, $slots, componentData }  = this;
+      const { item } = $slots;
+      if (!item) {
+        throw new Error('draggable element must have an item slot')
+      }
+      const nodes = componentData.flatMap((comp: any) => {
+        return item({ element: comp }).map((vnode: any) => {
+          return vnode
+        })
+      })
+      return nodes
     } catch(err: any) {
       this.error = true
       return h('pre', { style: { color: 'red' } }, err.stack)

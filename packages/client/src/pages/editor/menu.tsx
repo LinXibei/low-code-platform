@@ -2,7 +2,7 @@ import { defineComponent, h, ref } from "vue";
 import '@/styles/editor/menu.scss';
 import { ElTabs, ElTabPane } from 'element-plus'
 import { ComponentMeta } from '@/types'
-import componentPanel from './component-panel';
+import componentPanel from './component-panel.vue';
 const btns = [
   {
     label: '组件概览',
