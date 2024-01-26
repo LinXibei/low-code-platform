@@ -12,6 +12,11 @@
       <h3>{{ key }}</h3>
       <div class="component-panel-list">
         <draggable-component
+          :move="move"
+          v-model="myArray" 
+          group="people" 
+          @start="drag=true" 
+          @end="drag=false"
           :componentData="map[key]">
           <template #item="{ element }">
             <p>
@@ -37,9 +42,11 @@ export default {
   setup(props) {
     const inputModel = ref('')
     const { components } = props;
+    const drag = ref(false)
     const onChange = (e: any) => {
       console.log(99999, e)
     }
+    const myArray = reactive([])
     // {
     //   name: 'button',
     //   key: 'button',
@@ -54,42 +61,16 @@ export default {
     for (const item of components) {
       map[item.typeCn] = [...map[item.typeCn] || [], item]
     }
-    // const component: Ref<VNode[]> = ref([])
-    // watch(map, (newV) => {
-    //   for (const [key, item] of Object.entries(newV)) {
-    //     component.value.push()
-    //     // const tmpComps: JSX.Element[] = []
-    //     // for (const comp of item) {
-    //     //   tmpComps.push()
-    //     // }
-    //     const props = {
-    //       model: item
-    //     }
-    //     component.value.push( 
-    //       <div class="component-panel-list">
-    //         <draggableComponent
-    //           { ...props }
-    //           >
-    //           {{
-    //             item: () => '11111'
-    //           }}
-    //         </draggableComponent>
-    //       </div>
-    //     )
-    //   }
-    // }, { immediate: true, deep: true })
-    // const componentContainer = () => h(
-    //   <div class="component-panel-container">
-    //     { component.value }
-    //   </div>
-    // )
-    // return () => {
-    //   return h('div', {}, [searchInput(), componentContainer()])
-    // }
+    const move = (e: any) => {
+      
+    }
     return {
+      myArray,
       inputModel,
       onChange,
-      map
+      map,
+      move,
+      drag
     }
   }
 }

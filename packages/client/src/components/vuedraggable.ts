@@ -57,6 +57,7 @@ const draggableComponent = defineComponent({
       if (!item) {
         throw new Error('draggable element must have an item slot')
       }
+      console.log(222, $attrs)
       const nodes = componentData.flatMap((comp: any) => {
         return item({ element: comp }).map((vnode: any) => {
           return vnode
@@ -98,8 +99,16 @@ const draggableComponent = defineComponent({
     onDragUpdate(evt) {
       console.log(555, evt);
     },
-    onDragMove(evt) {
+    onDragMove(evt: Event & { draggedContext: any }) {
+      const { move } = this;
+      if (!move) {
+        return true;
+      }
+      const draggedCtx = {
+        ...evt.draggedContext
+      }
       console.log(666, evt);
+      return move(draggedCtx);
     },
     onDragEnd() {
       console.log(777);
