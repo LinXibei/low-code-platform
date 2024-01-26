@@ -10,21 +10,22 @@
       />
     <div class="component-panel-list-container" v-for="key in Object.keys(map)" :key="key">
       <h3>{{ key }}</h3>
-      <div class="component-panel-list">
-        <draggable-component
-          :move="move"
-          v-model="myArray" 
-          group="people" 
-          @start="drag=true" 
-          @end="drag=false"
-          :componentData="map[key]">
-          <template #item="{ element }">
-            <p>
-              <font-awesome-icon :icon="['fas', element.icon]"/>{{ element.alias }}
-            </p>
-          </template>
-        </draggable-component>
-      </div>
+      <draggable
+        :list="map[key]"
+        :group="{ name: 'dragCanvas', pull: 'clone', put: false }"
+        item-key="name"
+        :clone="cloneFn"
+        @end="endFn"
+        :sort="false"
+        :move="dragMove"
+        @start="starFn"
+        class="component-panel-list">
+        <template #item="{ element }">
+          <p>
+            <font-awesome-icon :icon="['fas', element.icon]"/>{{ element.alias }}
+          </p>
+        </template>
+      </draggable>
     </div>
   </div>
 </template>
@@ -32,11 +33,11 @@
 <script lang="ts">
 import { reactive, ref } from "vue"
 import { ComponentMeta } from '@/types'
-import draggableComponent from '@/components/vuedraggable'
+import draggable from 'vuedraggable'
 export default {
   name: 'component-panel',
   components: {
-    draggableComponent
+    draggable
   },
   props: ['components'],
   setup(props) {
@@ -62,7 +63,21 @@ export default {
       map[item.typeCn] = [...map[item.typeCn] || [], item]
     }
     const move = (e: any) => {
-      
+      console.log(3333, e)
+    }
+    const cloneFn = element => {
+      console.log(111, element)
+    };
+
+    const starFn = event => {
+      console.log(222, event)
+    };
+
+    const endFn = event => {
+      console.log(333, event)
+    };
+    const dragMove = (e: any) => {
+      console.log(444, e)
     }
     return {
       myArray,
@@ -70,7 +85,11 @@ export default {
       onChange,
       map,
       move,
-      drag
+      drag,
+      cloneFn,
+      starFn,
+      endFn,
+      dragMove
     }
   }
 }
