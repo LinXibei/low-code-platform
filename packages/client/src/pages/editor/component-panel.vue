@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref } from "vue"
+import { reactive, ref, watch } from "vue"
 import { ComponentMeta } from '@/types'
 import draggable from 'vuedraggable'
 export default {
@@ -44,6 +44,13 @@ export default {
     const inputModel = ref('')
     const { components } = props;
     const drag = ref(false)
+    const data = reactive<{
+      openKeys: string[],
+      curComponent: ComponentMeta | null
+    }>({
+      openKeys: [],
+      curComponent: null
+    })
     const onChange = (e: any) => {
       console.log(99999, e)
     }
@@ -62,6 +69,17 @@ export default {
     for (const item of components) {
       map[item.typeCn] = [...map[item.typeCn] || [], item]
     }
+    watch(
+      () => components,
+      (newVal: ComponentMeta[]) => {
+        newVal.length && newVal.forEach((element) => {
+          element.key && data.openKeys.push(element.key)
+        });
+      },
+      {
+        deep: true,
+      }
+    )
     const move = (e: any) => {
       console.log(3333, e)
     }
