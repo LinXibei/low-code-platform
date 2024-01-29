@@ -1,20 +1,28 @@
 import { defineComponent, h, ref } from "vue";
-import Home from "@/layouts/Home.vue";
-// import EditorHeader from '@/components/EditorHeader.vue'
+// import Home from "@/layouts/Home.vue";
+import dragWrap from "./drag-wrap.vue";
 export default defineComponent({
   components: {
-    // EditorHeader,
+    dragWrap,
   },
   name: 'editor-area',
-  setup() {
+  setup(props, { attrs }) {
     const first = ref('2343423')
-    return () => {
-      return h(Home, {
-        style: { color: 'red' },
-        firstName: first.value
-      }, {
-        default: () => h('div', {}, 'editor-area')
-      })
+    const renderModal = () => h('div', {}, 'renderModal');
+    const renderDrawer = () => h('div', {}, 'renderDrawer');
+    return {
+      props,
+      first,
+      attrs,
+      renderModal,
+      renderDrawer
     }
+  },
+  render() {
+    return (
+      <>
+        <dragWrap {...this.props} {...this.attrs}/>
+      </>
+    )
   }
 })
