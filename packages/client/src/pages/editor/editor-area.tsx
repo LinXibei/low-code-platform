@@ -1,5 +1,4 @@
 import { defineComponent, h, ref } from "vue";
-// import Home from "@/layouts/Home.vue";
 import dragWrap from "./drag-wrap.vue";
 export default defineComponent({
   components: {

@@ -21,13 +21,28 @@ const component: DefineComponent = defineComponent({
       }
       return componentVNode
     }
+    const parentProps = {
+      class: ['use-drag-item'],
+      ['data-uuid']: props.element.uuid,
+      ['data-index']: props.index,
+      onclick: (event: MouseEvent) => {
+        const target = event.target;
+        console.log('parentProps', target)
+        event.stopPropagation();
+      },
+      onMouseover: (event: MouseEvent) => {
+        const target = event.target;
+        console.log('parentProps onmouseover', target)
+      }
+    }
     return {
       props,
-      itemComponent
+      itemComponent,
+      parentProps
     }
   },
   render() {
-    return h(this.itemComponent)
+    return h('div', this.parentProps, this.itemComponent())
     // return h(dragDiv, {
     //   elementNode: {
     //     uuid: 1232243,
