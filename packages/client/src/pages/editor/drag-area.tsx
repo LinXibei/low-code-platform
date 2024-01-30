@@ -30,7 +30,9 @@ export default defineComponent({
       onStart: dragStart,
       list: [{
         name: '1',
-        key: '1'
+        key: '1',
+        uuid: 12432432,
+        tag: 'Div',
       }],
       itemKey: 'name',
       // tag: 'a-row',
@@ -49,8 +51,11 @@ export default defineComponent({
       ...this.dragProps
     }, {
       item: ({ element, index }: slotItemInterface) => {
-        console.log(11, element, index)
-        return h(DraggableItem)
+        const tmpProps = {
+          element,
+          index,
+        }
+        return h(DraggableItem, tmpProps)
       }
     });
   }
