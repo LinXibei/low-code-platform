@@ -2,9 +2,9 @@ import { defineComponent, h, ref } from "vue";
 import '@/styles/editor/index.scss';
 // import Home from "@/layouts/Home.vue";
 // import EditorHeader from '@/components/EditorHeader.vue'
-import propPanel from "./prop-panel";
-import editorMenu from "./menu";
-import editorArea from "./editor-area";
+import propPanel from "./prop/index";
+import editorMenu from "./menu/index";
+import editorArea from "./editor-area/index";
 export default defineComponent({
   components: {
     editorMenu,
