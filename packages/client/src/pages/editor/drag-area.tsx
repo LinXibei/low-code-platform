@@ -14,7 +14,6 @@ export default defineComponent({
   },
   setup(props, ctx) {
     const { slots } = ctx;
-    console.log(22221111, slots)
     const dragStart = () => {
       console.log('dragStart')
     }
@@ -46,7 +45,6 @@ export default defineComponent({
     }
   },
   render() {
-    console.log(322, this.props, this.dragProps)
     return h(Draggable, {
       ...this.dragProps
     }, {

@@ -38,7 +38,9 @@ export default defineComponent({
       }
     }
     return () => (
-      <div {...elementNodeProps.value} v-slots={slots}>
+      <div {...elementNodeProps.value}>
+        22222
+        {slots.default()}
       </div>
     )
   },

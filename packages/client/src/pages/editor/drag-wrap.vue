@@ -18,8 +18,8 @@ export default defineComponent({
     dragArea
   },
   setup(props, context) {
-    const { attrs } = context
-    console.log('drag-wrap', props)
+    const { attrs, slots } = context
+    console.log('drag-wrap', props, attrs, slots)
     return {
       attrs
     }

@@ -42,13 +42,15 @@ const component: DefineComponent = defineComponent({
     }
   },
   render() {
-    return h('div', this.parentProps, this.itemComponent())
-    // return h(dragDiv, {
-    //   elementNode: {
-    //     uuid: 1232243,
-    //     children: []
-    //   }
-    // }, '234324')
+    // return h('div', this.parentProps, this.itemComponent())
+    return h('div', this.parentProps, h(dragDiv, {
+      elementNode: {
+        uuid: 1232243,
+        children: []
+      }
+    }, {
+      default: () => this.itemComponent()
+    }))
   }
 })
 export default component;
