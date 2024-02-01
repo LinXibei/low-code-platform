@@ -6,12 +6,11 @@ export default defineComponent({
   },
   name: 'editor-area',
   setup(props, { attrs }) {
-    const first = ref('2343423')
     const renderModal = () => h('div', {}, 'renderModal');
     const renderDrawer = () => h('div', {}, 'renderDrawer');
+    console.log('drag-area', props)
     return {
       props,
-      first,
       attrs,
       renderModal,
       renderDrawer

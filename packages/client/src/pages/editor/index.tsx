@@ -17,7 +17,9 @@ export default defineComponent({
     return () => (
       <div class="editor-container">
         <editorMenu />
-        <editorArea />
+        <div className="editor-area">
+          <editorArea />
+        </div>
         <propPanel />
       </div>
     )

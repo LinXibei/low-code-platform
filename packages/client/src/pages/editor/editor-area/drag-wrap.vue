@@ -1,5 +1,5 @@
 <template>
-  <drag-area :components="components" :areaProps="areaProps">
+  <drag-area :components="components" :areaProps="areaProps" class="drag-wrap">
     <template #item="{ element }">
       <drag-item
         :element="element"
