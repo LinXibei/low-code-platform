@@ -153,7 +153,7 @@ export default {
 .component-panel-search-input{
   width: 210px;
   position: relative;
-  left: -5px;
+  left: 0;
   top: 9px;
 }
 </style>

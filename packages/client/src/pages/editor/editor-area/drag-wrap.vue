@@ -1,5 +1,5 @@
 <template>
-  <drag-area :first="attrs.first" v-bind="attrs" class="editor-area">
+  <drag-area :components="components" :areaProps="areaProps">
     <template #item="{ element }">
       <drag-item
         :element="element"
@@ -17,20 +17,8 @@ export default defineComponent({
     dragItem,
     dragArea
   },
-  setup(props, context) {
-    const { attrs, slots } = context
-    console.log('drag-wrap', props, attrs, slots)
-    return {
-      attrs
-    }
-  }
+  props: ['components', 'areaProps']
 })
 </script>
 <style lang="scss" scoped>
-.editor-area {
-  width: calc(100% - 650px);
-  height: 100%;
-  background: #fff;
-  border-radius: 4px;
-}
 </style>
