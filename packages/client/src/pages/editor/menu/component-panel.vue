@@ -2,7 +2,7 @@
   <div class="component-panel-container">
     <el-input 
       v-model="inputModel"
-      prefixIcon="el-icon-search"
+      :prefix-icon="Search"
       class="component-panel-search-input"
       placeholder="组件/模板名称"
       onChange="onChange"
@@ -33,11 +33,13 @@
 <script lang="ts">
 import { reactive, ref, watch } from "vue"
 import { ComponentMeta } from '@/types'
+import { Search } from '@element-plus/icons-vue'
 import draggable from 'vuedraggable'
 export default {
   name: 'component-panel',
   components: {
-    draggable
+    draggable,
+    Search
   },
   props: ['components'],
   setup(props) {
@@ -107,7 +109,8 @@ export default {
       cloneFn,
       starFn,
       endFn,
-      dragMove
+      dragMove,
+      Search
     }
   }
 }
